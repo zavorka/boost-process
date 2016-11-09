@@ -99,6 +99,14 @@ public:
     int exit_code() const {return ::boost::process::detail::api::eval_exit_status(_exit_status->load());}
     pid_t id()      const {return _child_handle.id(); }
 
+
+    void kill(int signo)
+    {
+        if (valid() && running()) {
+            boost::process::detail::api::kill(_child_handle, signo);
+        }
+    }
+
     bool running() const
     {
         if (valid() && !_exited())
@@ -171,6 +179,14 @@ public:
             return res;
         }
         return false;
+    }
+
+    void kill(int signo, std::error_code& ec) noexcept
+    {
+        if (valid() && running()) {
+            boost::process::detail::api::kill(_child_handle, signo);
+        }
+        ec.clear();
     }
 
     void terminate(std::error_code & ec) noexcept
