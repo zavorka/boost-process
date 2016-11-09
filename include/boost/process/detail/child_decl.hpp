@@ -45,11 +45,11 @@ using ::boost::process::detail::api::pid_t;
 class child
 {
     ::boost::process::detail::api::child_handle _child_handle;
-    std::shared_ptr<std::atomic<int>> _exit_status = std::make_shared<std::atomic<int>>(::boost::process::detail::api::still_active);
+    std::shared_ptr<std::atomic<int>> mutable _exit_status = std::make_shared<std::atomic<int>>(::boost::process::detail::api::still_active);
     bool _attached = true;
     bool _terminated = false;
 
-    bool _exited()
+    bool _exited() const
     {
         return _terminated || !::boost::process::detail::api::is_running(_exit_status->load());
     };
@@ -99,7 +99,7 @@ public:
     int exit_code() const {return ::boost::process::detail::api::eval_exit_status(_exit_status->load());}
     pid_t id()      const {return _child_handle.id(); }
 
-    bool running()
+    bool running() const
     {
         if (valid() && !_exited())
         {

@@ -103,7 +103,7 @@ struct exe_cmd_init;
 template<>
 struct exe_cmd_init<char> : boost::process::detail::api::handler_base_ext
 {
-    exe_cmd_init(const exe_cmd_init & ) = delete;
+    exe_cmd_init(const exe_cmd_init & ) = default;
     exe_cmd_init(exe_cmd_init && ) = default;
     exe_cmd_init(std::string && exe, std::vector<std::string> && args)
             : exe(std::move(exe)), args(std::move(args)) {};
