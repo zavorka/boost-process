@@ -81,7 +81,7 @@ struct async_out_buffer : ::boost::process::detail::posix::async_handler
                                     pipe->close(ec);
                               });
                 };
-    };
+    }
 
     template <typename Executor>
     void on_exec_setup(Executor &exec)
@@ -161,7 +161,7 @@ struct async_out_future : ::boost::process::detail::posix::async_handler
                 };
 
 
-    };
+    }
 
     template <typename Executor>
     void on_exec_setup(Executor &exec)

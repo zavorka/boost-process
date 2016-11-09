@@ -84,7 +84,7 @@ struct async_in_buffer : ::boost::process::detail::posix::async_handler
                             pipe->close(ec);
                       });
                };
-    };
+    }
     template <typename Executor>
     void on_exec_setup(Executor &exec)
     {
