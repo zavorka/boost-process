@@ -8,8 +8,9 @@ add_library(${PROJECT_NAME} INTERFACE)
 set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_include_directories(${PROJECT_NAME} INTERFACE ${INCLUDE_DIR})
 target_sources(${PROJECT_NAME} INTERFACE
-        ${INCLUDE_DIR}/)
+        ${INCLUDE_DIR})
 target_link_libraries(${PROJECT_NAME} INTERFACE
         Boost::boost
         Boost::system)
 
+add_library(Boost::process ALIAS boost-process)

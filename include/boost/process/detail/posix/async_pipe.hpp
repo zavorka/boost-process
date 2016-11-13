@@ -42,8 +42,8 @@ public:
     inline async_pipe(const async_pipe& lhs);
     async_pipe(async_pipe&& lhs)  : _source(std::move(lhs._source)), _sink(std::move(lhs._sink))
     {
-        lhs._source.assign (-1);
-        lhs._sink  .assign (-1);
+        //lhs._source.assign (-1);
+        //lhs._sink  .assign (-1);
     }
 
     template<class CharT, class Traits = std::char_traits<CharT>>
